@@ -35,6 +35,10 @@ module.exports = {
   },
 
   _shouldIncludeFiles: function() {
-    return !!this.app.tests;
+    /*
+     * using `!!this.app.tests;` doesn't work in ember twiddle
+     * see: https://github.com/san650/ember-cli-page-object/issues/308#issuecomment-301596850
+     * */
+    return this.app.env !== 'production';
   }
 };
